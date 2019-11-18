@@ -15,7 +15,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	case r.URL.Path == "/search":
 		searchHandler(w, r)
 		return
-	case pageFinder.MatchString(strings.TrimPrefix(r.URL.Path, "/")):
+	case r.URL.Path == "/" || pageFinder.MatchString(strings.TrimPrefix(r.URL.Path, "/")):
 		pageHandler(w, r)
 		return
 	}
