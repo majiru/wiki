@@ -1,0 +1,16 @@
+wiki: A WikiWiki style wiki written in go
+
+Pages are generated on visit, but are not saved until content has been created for them.
+Pages can be written in markdown, the resulting html is sanatized using bluemonday.
+Text in pages matching the regexp `([A-Z][a-z]+)+` automatically link to pages with that
+name in WikiWiki style.
+
+Building:
+	$ git clone https://github.com/majiru/wiki
+	$ cd wiki && go build
+
+Usage:
+	$ ./wiki
+	This starts the wiki in the current directory serving on port 8080.
+	The port can be changed with the -port flag.
+	Content is saved in './data' this can be changed by modifying the const in main.go.
