@@ -2,7 +2,7 @@ wiki: A WikiWiki style wiki written in go
 
 Pages are generated on visit, but are not saved until content has been created for them.
 Pages can be written in markdown, the resulting html is sanatized using bluemonday.
-Text in pages matching the regexp `([A-Z][a-z]+)+` automatically link to pages with that
+Text in pages matching the regexp `([A-0-9Z][a-z0-9]+)+` automatically link to pages with that
 name in WikiWiki style.
 
 Building:
