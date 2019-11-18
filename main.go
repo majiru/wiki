@@ -1,10 +1,10 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"net/http"
 	"os"
-	"flag"
 
 	"github.com/majiru/aitm"
 )
@@ -26,7 +26,7 @@ func main() {
 	mux := &http.ServeMux{}
 	mux.HandleFunc("/", rootHandler)
 	srv := &http.Server{
-		Addr: ":"+port,
+		Addr:    ":" + port,
 		Handler: mux,
 	}
 	if auth == "" {

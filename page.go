@@ -5,17 +5,17 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"text/template"
 	"regexp"
 	"strings"
+	"text/template"
 
+	"github.com/gomarkdown/markdown"
 	"github.com/microcosm-cc/bluemonday"
-    	"github.com/gomarkdown/markdown"
 )
 
 var pageFinder *regexp.Regexp
 
-func init(){
+func init() {
 	pageFinder = regexp.MustCompile(`([A-Z][a-z]+)+`)
 }
 
@@ -36,7 +36,7 @@ func MarshalSearch(w io.Writer, query string) error {
 	if err != nil {
 		return err
 	}
-	list := struct { Pages []string }{}
+	list := struct{ Pages []string }{}
 	for _, f := range files {
 		if strings.Contains(f, query) {
 			list.Pages = append(list.Pages, f)
@@ -80,7 +80,7 @@ func (p *Page) Save() error {
 }
 
 func (p *Page) Marshal(w io.Writer) error {
-	t, err  := template.New("page").Parse(page)
+	t, err := template.New("page").Parse(page)
 	if err != nil {
 		return err
 	}
@@ -94,7 +94,7 @@ func (p *Page) Marshal(w io.Writer) error {
 }
 
 func (p *Page) MarshalEdit(w io.Writer) error {
-	t, err  := template.New("edit").Parse(editPage)
+	t, err := template.New("edit").Parse(editPage)
 	if err != nil {
 		return err
 	}
@@ -133,7 +133,7 @@ const editPage = `
 </html>
 `
 
-const searchPage=`
+const searchPage = `
 <html>
 <head>
 	<title>Search</title>
